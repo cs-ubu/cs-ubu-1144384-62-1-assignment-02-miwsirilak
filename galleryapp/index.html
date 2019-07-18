@@ -1,39 +1,133 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>CSUBU Lecturers</title>
-    <style>
-    .avatar {
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.avatar {
         vertical-align: middle;
         width: 50px;
         height: 50px;
         border-radius: 50%;
-    }
-    </style>
-  </head>
-  <body background="http://picsum.photos/1024/1024?grayscle">
-      <div>
-          <h1>Gallery Application</h1>
-      </div>
-    <div>
-      <img class="avatar" src="http://picsum.photos/200" alt="Dr.K">
-      <img class="avatar" src="http://picsum.photos/200" alt="Assist.Prof.Chayaporn">
-      <img class="avatar" src="http://picsum.photos/200" alt="Dr.Tossaporn">
-      <img class="avatar" src="http://picsum.photos/200" alt="Dr.Phaichayon">
-      <img class="avatar" src="http://picsum.photos/200" alt="Dr.Woody">
-      <img class="avatar" src="http://picsum.photos/200" alt="Aj.Wasana">
-      <img class="avatar" src="http://picsum.photos/200" alt="Dr.Paul">
-      <img class="avatar" src="http://picsum.photos/200" alt="Dr.Suphawadee">
-      <img class="avatar" src="http://picsum.photos/200" alt="Aj.Wayo">
-    </div>
-    <div>
-        <img class = "mainpic" src="https://image.dek-d.com/contentimg/2018/nutty/may/mickey3(1).jpg" alt="main pic">
-    </div>
-    <footer>
-      Node <script>document.write(process.versions.node)</script>,
-      Chrome <script>document.write(process.versions.chrome)</script>,
-      and Electron <script>document.write(process.versions.electron)</script>.
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Itim;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 10%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body background="https://cartoon.mthai.com/app/uploads/2011/03/one-piece-profile-head.jpg">
+
+<div style="text-align:center">
+  <h1> Gallery Application</h1>
+</div>
+
+<!-- The four columns -->
+<div class="row">
+  <div class="column">
+    <img class="avatar" src="https://static.zerochan.net/Monkey.D..Luffy.full.956406.jpg" alt="noface1" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://picpost.postjung.com/data/158/158047-28-7899.jpg" alt="noface2" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://f.ptcdn.info/814/039/000/o1zg661fdlB22bw5b5a-o.jpg" alt="noface3" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://image.dek-d.com/27/0458/6855/123363465" alt="noface4" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://i.pinimg.com/originals/46/73/3d/46733d0ff6514dce23ccdae0d70673ad.png" alt="noface5" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://pbs.twimg.com/media/C_C67IMUwAA_ITK.jpg" alt="noface6" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://std14289.files.wordpress.com/2014/01/150474_524653540907290_636473528_n.png" alt="noface7" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://pbs.twimg.com/profile_images/1105845691681726464/dVEpijhV_400x400.jpg" alt="noface8" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://ae01.alicdn.com/kf/HTB1Q2xDMXXXXXagapXXq6xXFXXXp/One-P-Iece.jpg_640x640.jpg" alt="noface9" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img class="avatar" src="https://f.ptcdn.info/732/013/000/1387898658-image-o.jpg" alt="noface10" style="width:100%" onclick="myFunction(this);">
+  </div>
+</div>
+
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:90%">
+  <div id="imgtext"></div>
+</div>
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+<footer>
+      <script>document.write(process.versions.node)</script>
+     <script>document.write(process.versions.chrome)</script>
+     <script>document.write(process.versions.electron)</script>
     </footer>
-  </body>
+</body>
 </html>
